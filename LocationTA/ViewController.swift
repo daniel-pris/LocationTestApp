@@ -60,9 +60,14 @@ class ViewController: UIViewController{
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
         button.setImage(UIImage(named: "plusImage"), for: .normal)
+        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    @objc func buttonTapped(sender : UIButton) {
+        
+    }
     
     let collectionImagesView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()

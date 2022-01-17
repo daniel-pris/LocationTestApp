@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6B5212B4FE780C78CFCC5505 /* libPods-LocationTA.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2528AB844A050C2DA8CCBBA /* libPods-LocationTA.a */; };
 		EB5264FA27830EA80080CB04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5264F927830EA80080CB04 /* AppDelegate.swift */; };
 		EB5264FC27830EA80080CB04 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5264FB27830EA80080CB04 /* SceneDelegate.swift */; };
 		EB5264FE27830EA80080CB04 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5264FD27830EA80080CB04 /* ViewController.swift */; };
@@ -14,9 +15,12 @@
 		EB52650327830EAC0080CB04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB52650227830EAC0080CB04 /* Assets.xcassets */; };
 		EB52650627830EAC0080CB04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB52650427830EAC0080CB04 /* LaunchScreen.storyboard */; };
 		EB79ACCA2794817100B4AFCD /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB79ACC92794817100B4AFCD /* CustomCell.swift */; };
+		EBB4B2B82795AA1200F0D9AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EBB4B2B72795AA1200F0D9AF /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		940DEB377E76AC7390090477 /* Pods-LocationTA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocationTA.release.xcconfig"; path = "Target Support Files/Pods-LocationTA/Pods-LocationTA.release.xcconfig"; sourceTree = "<group>"; };
+		D35941A883467F7D04185686 /* Pods-LocationTA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocationTA.debug.xcconfig"; path = "Target Support Files/Pods-LocationTA/Pods-LocationTA.debug.xcconfig"; sourceTree = "<group>"; };
 		EB5264F627830EA80080CB04 /* LocationTA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocationTA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB5264F927830EA80080CB04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB5264FB27830EA80080CB04 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +30,8 @@
 		EB52650527830EAC0080CB04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB52650727830EAC0080CB04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB79ACC92794817100B4AFCD /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		EBB4B2B72795AA1200F0D9AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F2528AB844A050C2DA8CCBBA /* libPods-LocationTA.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LocationTA.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +39,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B5212B4FE780C78CFCC5505 /* libPods-LocationTA.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		42CE272C83FF832BCD5054D9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F2528AB844A050C2DA8CCBBA /* libPods-LocationTA.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E08016B952E80574BA6161BB /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D35941A883467F7D04185686 /* Pods-LocationTA.debug.xcconfig */,
+				940DEB377E76AC7390090477 /* Pods-LocationTA.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		EB5264ED27830EA80080CB04 = {
 			isa = PBXGroup;
 			children = (
 				EB5264F827830EA80080CB04 /* LocationTA */,
 				EB5264F727830EA80080CB04 /* Products */,
+				E08016B952E80574BA6161BB /* Pods */,
+				42CE272C83FF832BCD5054D9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,6 +93,7 @@
 				EB52650227830EAC0080CB04 /* Assets.xcassets */,
 				EB52650427830EAC0080CB04 /* LaunchScreen.storyboard */,
 				EB52650727830EAC0080CB04 /* Info.plist */,
+				EBB4B2B72795AA1200F0D9AF /* GoogleService-Info.plist */,
 			);
 			path = LocationTA;
 			sourceTree = "<group>";
@@ -77,9 +105,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = EB52650A27830EAC0080CB04 /* Build configuration list for PBXNativeTarget "LocationTA" */;
 			buildPhases = (
+				81D9D9257F8C9BD29B2A837A /* [CP] Check Pods Manifest.lock */,
 				EB5264F227830EA80080CB04 /* Sources */,
 				EB5264F327830EA80080CB04 /* Frameworks */,
 				EB5264F427830EA80080CB04 /* Resources */,
+				8DC8DF8093022A978836103B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -129,12 +159,55 @@
 			buildActionMask = 2147483647;
 			files = (
 				EB52650627830EAC0080CB04 /* LaunchScreen.storyboard in Resources */,
+				EBB4B2B82795AA1200F0D9AF /* GoogleService-Info.plist in Resources */,
 				EB52650327830EAC0080CB04 /* Assets.xcassets in Resources */,
 				EB52650127830EA80080CB04 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		81D9D9257F8C9BD29B2A837A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-LocationTA-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8DC8DF8093022A978836103B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LocationTA/Pods-LocationTA-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-LocationTA/Pods-LocationTA-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LocationTA/Pods-LocationTA-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		EB5264F227830EA80080CB04 /* Sources */ = {
@@ -288,6 +361,7 @@
 		};
 		EB52650B27830EAC0080CB04 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D35941A883467F7D04185686 /* Pods-LocationTA.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -309,12 +383,13 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		EB52650C27830EAC0080CB04 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 940DEB377E76AC7390090477 /* Pods-LocationTA.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -336,7 +411,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
