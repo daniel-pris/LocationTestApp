@@ -15,6 +15,7 @@
 		EB52650327830EAC0080CB04 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EB52650227830EAC0080CB04 /* Assets.xcassets */; };
 		EB52650627830EAC0080CB04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB52650427830EAC0080CB04 /* LaunchScreen.storyboard */; };
 		EB79ACCA2794817100B4AFCD /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB79ACC92794817100B4AFCD /* CustomCell.swift */; };
+		EB9180482798642D00CA65BC /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB9180472798642D00CA65BC /* Location.swift */; };
 		EBB4B2B82795AA1200F0D9AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EBB4B2B72795AA1200F0D9AF /* GoogleService-Info.plist */; };
 		EBBCE04727984CBC000C8B4F /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBBCE04627984CBC000C8B4F /* DetailsViewController.swift */; };
 		EBD548212798019D002F8DB2 /* LocImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD548202798019D002F8DB2 /* LocImage.swift */; };
@@ -33,6 +34,7 @@
 		EB52650527830EAC0080CB04 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EB52650727830EAC0080CB04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB79ACC92794817100B4AFCD /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
+		EB9180472798642D00CA65BC /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		EBB4B2B72795AA1200F0D9AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		EBBCE04627984CBC000C8B4F /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		EBD548202798019D002F8DB2 /* LocImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocImage.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				EB5264FD27830EA80080CB04 /* ViewController.swift */,
 				EBBCE04627984CBC000C8B4F /* DetailsViewController.swift */,
 				EB79ACC92794817100B4AFCD /* CustomCell.swift */,
+				EB9180472798642D00CA65BC /* Location.swift */,
 				EB5264FF27830EA80080CB04 /* Main.storyboard */,
 				EB52650227830EAC0080CB04 /* Assets.xcassets */,
 				EB52650427830EAC0080CB04 /* LaunchScreen.storyboard */,
@@ -225,6 +228,7 @@
 				EB79ACCA2794817100B4AFCD /* CustomCell.swift in Sources */,
 				EB5264FC27830EA80080CB04 /* SceneDelegate.swift in Sources */,
 				EBBCE04727984CBC000C8B4F /* DetailsViewController.swift in Sources */,
+				EB9180482798642D00CA65BC /* Location.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -62,9 +62,18 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         textField.keyboardType = UIKeyboardType.default
         textField.returnKeyType = UIReturnKeyType.done
         textField.contentVerticalAlignment = UIControl.ContentVerticalAlignment.center
+        textField.addTarget(self, action: #selector(textFieldEditingChanged(_:)), for: .editingChanged)
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
+    
+    @objc func textFieldEditingChanged(_ textField: UITextField) {
+        
+        let locName = textField.text!
+        dbRef.updateChildValues(["locationName": locName])
+        print(textField.text)
+    }
+
     
     let button: UIButton = {
         let button = UIButton(type: .custom)
@@ -123,7 +132,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             
         }
     }
-    
     
     
     let collectionImagesView: UICollectionView = {

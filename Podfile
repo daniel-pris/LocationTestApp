@@ -7,6 +7,7 @@ target 'LocationTA' do
   pod 'Firebase/Core'
   pod 'Firebase/Database'
   pod 'Firebase/Storage'
+  pod 'Firebase/Firestore'
   pod 'SDWebImage', :modular_headers => true
 
 end
