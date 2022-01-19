@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6B5212B4FE780C78CFCC5505 /* libPods-LocationTA.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F2528AB844A050C2DA8CCBBA /* libPods-LocationTA.a */; };
+		DE79D95961849CA391478D05 /* Pods_LocationTA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CDB12DBBF6B9CE8D04F04D10 /* Pods_LocationTA.framework */; };
 		EB5264FA27830EA80080CB04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5264F927830EA80080CB04 /* AppDelegate.swift */; };
 		EB5264FC27830EA80080CB04 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5264FB27830EA80080CB04 /* SceneDelegate.swift */; };
 		EB5264FE27830EA80080CB04 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5264FD27830EA80080CB04 /* ViewController.swift */; };
@@ -16,10 +16,12 @@
 		EB52650627830EAC0080CB04 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EB52650427830EAC0080CB04 /* LaunchScreen.storyboard */; };
 		EB79ACCA2794817100B4AFCD /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB79ACC92794817100B4AFCD /* CustomCell.swift */; };
 		EBB4B2B82795AA1200F0D9AF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = EBB4B2B72795AA1200F0D9AF /* GoogleService-Info.plist */; };
+		EBD548212798019D002F8DB2 /* LocImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EBD548202798019D002F8DB2 /* LocImage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		940DEB377E76AC7390090477 /* Pods-LocationTA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocationTA.release.xcconfig"; path = "Target Support Files/Pods-LocationTA/Pods-LocationTA.release.xcconfig"; sourceTree = "<group>"; };
+		CDB12DBBF6B9CE8D04F04D10 /* Pods_LocationTA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LocationTA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D35941A883467F7D04185686 /* Pods-LocationTA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocationTA.debug.xcconfig"; path = "Target Support Files/Pods-LocationTA/Pods-LocationTA.debug.xcconfig"; sourceTree = "<group>"; };
 		EB5264F627830EA80080CB04 /* LocationTA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocationTA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB5264F927830EA80080CB04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -31,7 +33,7 @@
 		EB52650727830EAC0080CB04 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EB79ACC92794817100B4AFCD /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		EBB4B2B72795AA1200F0D9AF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		F2528AB844A050C2DA8CCBBA /* libPods-LocationTA.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-LocationTA.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EBD548202798019D002F8DB2 /* LocImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocImage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,7 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6B5212B4FE780C78CFCC5505 /* libPods-LocationTA.a in Frameworks */,
+				DE79D95961849CA391478D05 /* Pods_LocationTA.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -49,7 +51,7 @@
 		42CE272C83FF832BCD5054D9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F2528AB844A050C2DA8CCBBA /* libPods-LocationTA.a */,
+				CDB12DBBF6B9CE8D04F04D10 /* Pods_LocationTA.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -60,7 +62,6 @@
 				D35941A883467F7D04185686 /* Pods-LocationTA.debug.xcconfig */,
 				940DEB377E76AC7390090477 /* Pods-LocationTA.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -94,6 +95,7 @@
 				EB52650427830EAC0080CB04 /* LaunchScreen.storyboard */,
 				EB52650727830EAC0080CB04 /* Info.plist */,
 				EBB4B2B72795AA1200F0D9AF /* GoogleService-Info.plist */,
+				EBD548202798019D002F8DB2 /* LocImage.swift */,
 			);
 			path = LocationTA;
 			sourceTree = "<group>";
@@ -109,7 +111,7 @@
 				EB5264F227830EA80080CB04 /* Sources */,
 				EB5264F327830EA80080CB04 /* Frameworks */,
 				EB5264F427830EA80080CB04 /* Resources */,
-				8DC8DF8093022A978836103B /* [CP] Copy Pods Resources */,
+				931113751B3935FEAECF83C4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -190,21 +192,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		8DC8DF8093022A978836103B /* [CP] Copy Pods Resources */ = {
+		931113751B3935FEAECF83C4 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-LocationTA/Pods-LocationTA-resources-${CONFIGURATION}-input-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-LocationTA/Pods-LocationTA-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			name = "[CP] Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-LocationTA/Pods-LocationTA-resources-${CONFIGURATION}-output-files.xcfilelist",
+				"${PODS_ROOT}/Target Support Files/Pods-LocationTA/Pods-LocationTA-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LocationTA/Pods-LocationTA-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-LocationTA/Pods-LocationTA-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -214,6 +216,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EBD548212798019D002F8DB2 /* LocImage.swift in Sources */,
 				EB5264FE27830EA80080CB04 /* ViewController.swift in Sources */,
 				EB5264FA27830EA80080CB04 /* AppDelegate.swift in Sources */,
 				EB79ACCA2794817100B4AFCD /* CustomCell.swift in Sources */,

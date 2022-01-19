@@ -10,29 +10,19 @@ class CustomCell: UICollectionViewCell {
     
     static let identifier = "CustomCollectionViewCell"
     
-    
-    //    var data: CustomData? {
-    //        didSet {
-    //            guard let data = data else { return }
-    //            bg.image = data.backgroundImage
-    //
-    //        }
-    //    }
-    
-    fileprivate let bg: UIImageView = {
+    let bg: UIImageView = {
         let iv = UIImageView()
         iv.translatesAutoresizingMaskIntoConstraints = false
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
-        iv.layer.cornerRadius = 12
-        iv.image = UIImage(systemName: "house")
+        iv.layer.cornerRadius = 13
         return iv
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        contentView.backgroundColor = .red
+        contentView.backgroundColor = .clear
         contentView.layer.cornerRadius = 13
         
         contentView.addSubview(bg)

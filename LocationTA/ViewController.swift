@@ -6,8 +6,16 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
+import SDWebImage
 
 class ViewController: UIViewController{
+    
+    var images = [LocImage]()
+    
+    var dbRef: DatabaseReference!
     
     let viewLabel: UIView  = {
         let view = UIView()
@@ -22,7 +30,7 @@ class ViewController: UIViewController{
         return theImageView
     }()
     
-    let viewArownd: UIView  = {
+    let viewAround: UIView  = {
         let view = UIView()
         view.backgroundColor = .white
         
@@ -72,7 +80,8 @@ class ViewController: UIViewController{
     let collectionImagesView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
-        layout.minimumLineSpacing = 12
+        layout.minimumLineSpacing = 8
+        layout.minimumInteritemSpacing = 8
         
         let customCell = UICollectionViewCell()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -89,15 +98,32 @@ class ViewController: UIViewController{
         collectionImagesView.delegate = self
         collectionImagesView.dataSource = self
         
+        dbRef = Database.database().reference().child("images")
+        
+        loadDB()
         setUpUI()
         
     }
     
     
+    func loadDB() {
+        
+        dbRef.observe(DataEventType.value) { (snapshot) in
+            var newImage = [LocImage]()
+            
+            for locImageSnapshot in snapshot.children {
+                let LocImageOdject = LocImage(snapshot: locImageSnapshot as! DataSnapshot)
+                newImage.append(LocImageOdject)
+            }
+            self.images = newImage
+            self.collectionImagesView.reloadData()
+        }
+    }
+    
     func setUpUI() {
         
         view.addSubview(viewLabel)
-        view.addSubview(viewArownd)
+        view.addSubview(viewAround)
         view.addSubview(viewInside)
         view.addSubview(button)
         
@@ -134,20 +160,20 @@ class ViewController: UIViewController{
     }
     
     func setUpViewAround() {
-        viewArownd.topAnchor.constraint(equalTo: viewLabel.bottomAnchor, constant: 40).isActive = true
-        viewArownd.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        viewArownd.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 2/5).isActive = true
-        viewArownd.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        viewArownd.layer.cornerRadius = 23
-        viewArownd.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
+        viewAround.topAnchor.constraint(equalTo: viewLabel.bottomAnchor, constant: 40).isActive = true
+        viewAround.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
+        viewAround.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 5/6).isActive = true
+        viewAround.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        viewAround.layer.cornerRadius = 33
+        viewAround.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
         view.backgroundColor = UIColor(red: 0.979, green: 0.979, blue: 0.979, alpha: 1)
     }
     
     func setUpViewInside() {
-        viewInside.topAnchor.constraint(equalTo: viewArownd.topAnchor, constant: 15).isActive = true
+        viewInside.topAnchor.constraint(equalTo: viewAround.topAnchor, constant: 15).isActive = true
         viewInside.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        viewInside.widthAnchor.constraint(equalTo: viewArownd.widthAnchor, constant: -30).isActive = true
-        viewInside.heightAnchor.constraint(equalTo: viewArownd.heightAnchor, constant: -30).isActive = true
+        viewInside.widthAnchor.constraint(equalTo: viewAround.widthAnchor, constant: -30).isActive = true
+        viewInside.heightAnchor.constraint(equalTo: viewAround.heightAnchor, constant: -30).isActive = true
         viewInside.layer.cornerRadius = 23
         viewInside.backgroundColor = UIColor(red: 0.929, green: 0.953, blue: 0.957, alpha: 1)
         
@@ -157,19 +183,19 @@ class ViewController: UIViewController{
         locationNameTF.topAnchor.constraint(equalTo: viewInside.topAnchor, constant: 15).isActive = true
         locationNameTF.leftAnchor.constraint(equalTo: viewInside.leftAnchor, constant: 15).isActive = true
         locationNameTF.widthAnchor.constraint(equalTo: viewInside.widthAnchor, multiplier: 5/7).isActive = true
-        locationNameTF.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        locationNameTF.heightAnchor.constraint(equalToConstant: 30).isActive = true
     }
     
     func setUpButton() {
         button.rightAnchor.constraint(equalTo: viewInside.rightAnchor, constant: -15).isActive = true
         button.topAnchor.constraint(equalTo: viewInside.topAnchor, constant: 15).isActive = true
-        button.heightAnchor.constraint(equalToConstant: 40).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        button.heightAnchor.constraint(equalToConstant: 32).isActive = true
+        button.widthAnchor.constraint(equalToConstant: 32).isActive = true
     }
     
     
     func setUpCollectionImagesView() {
-        collectionImagesView.topAnchor.constraint(equalTo: locationNameTF.bottomAnchor, constant: 15).isActive = true
+        collectionImagesView.topAnchor.constraint(equalTo: locationNameTF.bottomAnchor, constant: 12).isActive = true
         collectionImagesView.rightAnchor.constraint(equalTo: viewInside.rightAnchor, constant: -15).isActive = true
         collectionImagesView.leftAnchor.constraint(equalTo: viewInside.leftAnchor, constant: 15).isActive = true
         collectionImagesView.bottomAnchor.constraint(equalTo: viewInside.bottomAnchor, constant: -15).isActive = true
@@ -180,11 +206,13 @@ class ViewController: UIViewController{
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout  {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return images.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCell.identifier, for: indexPath) as! CustomCell
+        let image = images[indexPath.row]
+        cell.bg.sd_setImage(with: URL(string: image.url), placeholderImage: UIImage(systemName: "globe.europe.africa"))
         return cell
     }
     
@@ -193,7 +221,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (collectionImagesView.frame.width/3 - 8), height: (collectionImagesView.frame.width/3 - 8))
+        return CGSize(width: (collectionImagesView.frame.width/3 - 6), height: (collectionImagesView.frame.height/2 - 6))
     }
     
 }
