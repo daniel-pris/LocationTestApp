@@ -7,15 +7,17 @@
 
 import UIKit
 import Firebase
-import FirebaseAuth
 import FirebaseDatabase
+import FirebaseStorage
 import SDWebImage
 
-class ViewController: UIViewController{
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
     var images = [LocImage]()
     
     var dbRef: DatabaseReference!
+    
+    let imagePicker = UIImagePickerController()
     
     let viewLabel: UIView  = {
         let view = UIView()
@@ -75,7 +77,54 @@ class ViewController: UIViewController{
     
     @objc func buttonTapped(sender : UIButton) {
         
+        imagePicker.allowsEditing = false
+        imagePicker.sourceType = .photoLibrary
+        imagePicker.delegate = self
+        present(imagePicker, animated: true, completion: nil)
+        
     }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        print("image was chosen")
+        dismiss(animated: true, completion: nil)
+        if let pickedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            
+            var data = Data()
+            let imageName = NSUUID().uuidString
+            data = pickedImage.jpegData(compressionQuality: 0.8)!
+            
+            let imageRef = Storage.storage().reference().child("images/" + imageName)
+            
+            _ = imageRef.putData(data, metadata: nil, completion: { (metadata, error) in
+                if error != nil {
+                    print(error as Any)
+                    return
+                }
+                
+                Storage.storage().reference().child("images/" + imageName).downloadURL(completion: { (url, error) in
+                    if error != nil {
+                        print(error as Any)
+                        return
+                    } else {
+                        let imageurl = url
+                        print(imageurl?.absoluteString ?? "")
+                        
+                        let key = self.dbRef.childByAutoId().key
+                        let image = ["url": imageurl?.absoluteString]
+                        
+                        let childUpdates = ["/\(String(describing: key))": image]
+                        self.dbRef.updateChildValues(childUpdates)
+                    }
+                    
+                    
+                })
+                
+            })
+            
+        }
+    }
+    
+    
     
     let collectionImagesView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -164,7 +213,7 @@ class ViewController: UIViewController{
         viewAround.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
         viewAround.heightAnchor.constraint(equalTo: view.widthAnchor, multiplier: 5/6).isActive = true
         viewAround.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        viewAround.layer.cornerRadius = 33
+        viewAround.layer.cornerRadius = 23
         viewAround.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
         view.backgroundColor = UIColor(red: 0.979, green: 0.979, blue: 0.979, alpha: 1)
     }
@@ -174,7 +223,7 @@ class ViewController: UIViewController{
         viewInside.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         viewInside.widthAnchor.constraint(equalTo: viewAround.widthAnchor, constant: -30).isActive = true
         viewInside.heightAnchor.constraint(equalTo: viewAround.heightAnchor, constant: -30).isActive = true
-        viewInside.layer.cornerRadius = 23
+        viewInside.layer.cornerRadius = 13
         viewInside.backgroundColor = UIColor(red: 0.929, green: 0.953, blue: 0.957, alpha: 1)
         
     }
@@ -198,7 +247,7 @@ class ViewController: UIViewController{
         collectionImagesView.topAnchor.constraint(equalTo: locationNameTF.bottomAnchor, constant: 12).isActive = true
         collectionImagesView.rightAnchor.constraint(equalTo: viewInside.rightAnchor, constant: -15).isActive = true
         collectionImagesView.leftAnchor.constraint(equalTo: viewInside.leftAnchor, constant: 15).isActive = true
-        collectionImagesView.bottomAnchor.constraint(equalTo: viewInside.bottomAnchor, constant: -15).isActive = true
+        collectionImagesView.bottomAnchor.constraint(equalTo: viewInside.bottomAnchor, constant: -10).isActive = true
     }
     
 }
@@ -212,12 +261,22 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCell.identifier, for: indexPath) as! CustomCell
         let image = images[indexPath.row]
-        cell.bg.sd_setImage(with: URL(string: image.url), placeholderImage: UIImage(systemName: "globe.europe.africa"))
+        cell.bg.sd_setImage(with: URL(string: image.url), placeholderImage: nil)
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("User tapped on item \(indexPath.row)")
+
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCell.identifier, for: indexPath) as! CustomCell
+        let image = images[indexPath.row]
+        cell.bg.sd_setImage(with: URL(string: image.url), placeholderImage: nil)
+        
+        let detailsVC = DetailsViewControllet()
+        detailsVC.imageView = cell.bg
+        detailsVC.modalPresentationStyle = .fullScreen
+        self.present(detailsVC, animated: true, completion: nil)
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
