@@ -9,13 +9,16 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 import FirebaseStorage
+import FirebaseFirestore
 import SDWebImage
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate{
     
+    var locations = [Location]()
     var images = [LocImage]()
     
-    var dbRef: DatabaseReference!
+    var db = Firestore.firestore()
+    var dbRef = Database.database().reference().child(K.imagesRef)
     
     let imagePicker = UIImagePickerController()
     
@@ -67,13 +70,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return textField
     }()
     
+    
     @objc func textFieldEditingChanged(_ textField: UITextField) {
         
-        let locName = textField.text!
-        dbRef.updateChildValues(["locationName": locName])
-        print(textField.text)
+        if let locName = textField.text {
+            db.collection(K.locationRef).document(K.id).setData([ K.locName: locName ], merge: true)
+        }
     }
-
+    
     
     let button: UIButton = {
         let button = UIButton(type: .custom)
@@ -83,6 +87,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
     
     @objc func buttonTapped(sender : UIButton) {
         
@@ -102,7 +107,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             let imageName = NSUUID().uuidString
             data = pickedImage.jpegData(compressionQuality: 0.8)!
             
-            let imageRef = Storage.storage().reference().child("images/" + imageName)
+            let imageRef = Storage.storage().reference().child(K.imagesRef + "/" + imageName)
             
             _ = imageRef.putData(data, metadata: nil, completion: { (metadata, error) in
                 if error != nil {
@@ -110,7 +115,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                     return
                 }
                 
-                Storage.storage().reference().child("images/" + imageName).downloadURL(completion: { (url, error) in
+                Storage.storage().reference().child(K.imagesRef + "/" + imageName).downloadURL(completion: { (url, error) in
                     if error != nil {
                         print(error as Any)
                         return
@@ -155,8 +160,6 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         collectionImagesView.delegate = self
         collectionImagesView.dataSource = self
         
-        dbRef = Database.database().reference().child("images")
-        
         loadDB()
         setUpUI()
         
@@ -173,7 +176,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
                 newImage.append(LocImageOdject)
             }
             self.images = newImage
-            self.collectionImagesView.reloadData()
+            
+            DispatchQueue.main.async {
+                self.collectionImagesView.reloadData()
+            }
         }
     }
     
@@ -241,6 +247,36 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         locationNameTF.leftAnchor.constraint(equalTo: viewInside.leftAnchor, constant: 15).isActive = true
         locationNameTF.widthAnchor.constraint(equalTo: viewInside.widthAnchor, multiplier: 5/7).isActive = true
         locationNameTF.heightAnchor.constraint(equalToConstant: 30).isActive = true
+        
+        LoadTFName()
+        
+    }
+    
+    func LoadTFName() {
+        
+        db.collection(K.locationRef)
+            .order(by: K.locName)
+            .addSnapshotListener { (querySnapshot, error) in
+                
+                self.locations = []
+                
+                if let e = error {
+                    print("There was an issue retrieving data from Firestore. \(e)")
+                } else {
+                    if let snapshotDocuments = querySnapshot?.documents {
+                        for doc in snapshotDocuments {
+                            let data = doc.data()
+                            if let messageBody = data[K.locName] as? String {
+                                let newLoc = Location(locationName: messageBody, images: self.images)
+                                self.locations.append(newLoc)
+                                
+                                self.locationNameTF.text = newLoc.locationName
+                            }
+                        }
+                    }
+                }
+            }
+        
     }
     
     func setUpButton() {
@@ -275,7 +311,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("User tapped on item \(indexPath.row)")
-
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CustomCell.identifier, for: indexPath) as! CustomCell
         let image = images[indexPath.row]
         cell.bg.sd_setImage(with: URL(string: image.url), placeholderImage: nil)

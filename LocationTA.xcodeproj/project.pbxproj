@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3CB0A4C650F4B6413265E2BA /* Pods_LocationTA.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 42971D1977727FBFD7C70582 /* Pods_LocationTA.framework */; };
+		EB505E542799901E003A8C86 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB505E532799901E003A8C86 /* Constants.swift */; };
 		EB5264FA27830EA80080CB04 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5264F927830EA80080CB04 /* AppDelegate.swift */; };
 		EB5264FC27830EA80080CB04 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5264FB27830EA80080CB04 /* SceneDelegate.swift */; };
 		EB5264FE27830EA80080CB04 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EB5264FD27830EA80080CB04 /* ViewController.swift */; };
@@ -25,6 +26,7 @@
 		1ADED315A93345F5277DD850 /* Pods-LocationTA.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocationTA.release.xcconfig"; path = "Target Support Files/Pods-LocationTA/Pods-LocationTA.release.xcconfig"; sourceTree = "<group>"; };
 		42971D1977727FBFD7C70582 /* Pods_LocationTA.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LocationTA.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E76DA570616C4DC83D6245BA /* Pods-LocationTA.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocationTA.debug.xcconfig"; path = "Target Support Files/Pods-LocationTA/Pods-LocationTA.debug.xcconfig"; sourceTree = "<group>"; };
+		EB505E532799901E003A8C86 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		EB5264F627830EA80080CB04 /* LocationTA.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LocationTA.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB5264F927830EA80080CB04 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EB5264FB27830EA80080CB04 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -69,6 +71,43 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		EB505E4B279975C4003A8C86 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EBD548202798019D002F8DB2 /* LocImage.swift */,
+				EB9180472798642D00CA65BC /* Location.swift */,
+				EB505E532799901E003A8C86 /* Constants.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EB505E4C279975ED003A8C86 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EB79ACC92794817100B4AFCD /* CustomCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EB505E4D27997671003A8C86 /* Cotollers */ = {
+			isa = PBXGroup;
+			children = (
+				EB5264FD27830EA80080CB04 /* ViewController.swift */,
+				EBBCE04627984CBC000C8B4F /* DetailsViewController.swift */,
+			);
+			path = Cotollers;
+			sourceTree = "<group>";
+		};
+		EB505E50279981AC003A8C86 /* Resourses */ = {
+			isa = PBXGroup;
+			children = (
+				EB5264FF27830EA80080CB04 /* Main.storyboard */,
+				EB52650227830EAC0080CB04 /* Assets.xcassets */,
+				EB52650427830EAC0080CB04 /* LaunchScreen.storyboard */,
+			);
+			path = Resourses;
+			sourceTree = "<group>";
+		};
 		EB5264ED27830EA80080CB04 = {
 			isa = PBXGroup;
 			children = (
@@ -92,16 +131,12 @@
 			children = (
 				EB5264F927830EA80080CB04 /* AppDelegate.swift */,
 				EB5264FB27830EA80080CB04 /* SceneDelegate.swift */,
-				EB5264FD27830EA80080CB04 /* ViewController.swift */,
-				EBBCE04627984CBC000C8B4F /* DetailsViewController.swift */,
-				EB79ACC92794817100B4AFCD /* CustomCell.swift */,
-				EB9180472798642D00CA65BC /* Location.swift */,
-				EB5264FF27830EA80080CB04 /* Main.storyboard */,
-				EB52650227830EAC0080CB04 /* Assets.xcassets */,
-				EB52650427830EAC0080CB04 /* LaunchScreen.storyboard */,
-				EB52650727830EAC0080CB04 /* Info.plist */,
+				EB505E4B279975C4003A8C86 /* Models */,
+				EB505E4C279975ED003A8C86 /* Views */,
+				EB505E4D27997671003A8C86 /* Cotollers */,
+				EB505E50279981AC003A8C86 /* Resourses */,
 				EBB4B2B72795AA1200F0D9AF /* GoogleService-Info.plist */,
-				EBD548202798019D002F8DB2 /* LocImage.swift */,
+				EB52650727830EAC0080CB04 /* Info.plist */,
 			);
 			path = LocationTA;
 			sourceTree = "<group>";
@@ -227,6 +262,7 @@
 				EB5264FA27830EA80080CB04 /* AppDelegate.swift in Sources */,
 				EB79ACCA2794817100B4AFCD /* CustomCell.swift in Sources */,
 				EB5264FC27830EA80080CB04 /* SceneDelegate.swift in Sources */,
+				EB505E542799901E003A8C86 /* Constants.swift in Sources */,
 				EBBCE04727984CBC000C8B4F /* DetailsViewController.swift in Sources */,
 				EB9180482798642D00CA65BC /* Location.swift in Sources */,
 			);
