@@ -1,5 +1,17 @@
 # LocationTestApp
-(Возможно понадобится сделать 'pod install')
+
+![](imm.png)
+
+## Stack
+UIkit,
+anchors,
+Firebase Storage,
+Firestore Database,
+Realtime Database,
+Cocoapods,
+CollectionView,
+PikerController,
+CustomCell
 
 ### Реализация(план/реальность в часах):
 * прототип UI: 1 / 1
@@ -8,7 +20,6 @@
 * firebase: 3 / 4
 * работа Button и TextField: 2 / 6
 
-План(идеальный) = 10
 Ожидаемое = 17
 
 Реальное = 15
