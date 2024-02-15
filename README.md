@@ -11,5 +11,7 @@ Realtime Database,
 Cocoapods,
 CollectionView,
 PikerController,
-CustomCell
+CustomCell,
+(an old project with bad architecture)
+
 
